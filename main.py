@@ -2,11 +2,13 @@
 #By James Cote
 #Load in a timetable file and find out the classes and times within it
 
+''' Imports '''
 from os import listdir, getcwd
 from os.path import isfile, join
 from datetime import datetime
 from configparser import ConfigParser
 
+''' Global Variables '''
 #configs
 CONFIG_FILE = getcwd() + "\\config.ini"
 config = ConfigParser()
@@ -71,22 +73,28 @@ class Course:
 					item[i] = convertTo12Hr(item[i])
 
 def convertTo12Hr(_timeStr):
+	""" Takes a 24-hour formatted timestring and converts it to 12-hour format.
+	:param _timeStr: Timestring to convert.
+	"""
 	try:
 		#taking the first digits of the _timeStr
 		splitStr = _timeStr.split(":")
 		numba = int(splitStr[0])
-		endTagStr = "PM"           #will be either AM or PM
+		endTagStr = "AM"           #will be either AM or PM
 		if numba == 0:
 			numba = 12
-			endTagStr = "AM"
-		elif numba > 12:
-			numba -= 12
-		else:
-			endTagStr = "AM"
+		elif numba >= 12:
+			numba = numba - 12 if numba > 12 else numba
+			endTagStr = "PM"
 		return str(numba) + ":" + splitStr[1] + " " + endTagStr
 	except ValueError:
 		return _timeStr
+
 def loadTimetable(_file,_name):
+	""" Loads in a new timetable.
+	:param _file: Filename of the timetable to load.
+	:param _name: Name to give to this timetable.
+	"""
 	#clear out the current timetable before loading in new one
 	global currTimetable
 	currTimetable = []
@@ -116,7 +124,11 @@ def loadTimetable(_file,_name):
 	#append the current timetable to timetable dic when done
 	timetableDic[currTimetableName] = currTimetable
 	txtFile.close()
+
 def changeCurrTimetable(_name):
+	""" Changes the current timetable.
+	:param _name: Name of the timetable file to change to.
+	"""
 	global currTimetable
 	global currTimetableName
 	currTimetable = timetableDic[_name]
@@ -125,28 +137,41 @@ def changeCurrTimetable(_name):
 	currCourseCodesList = [courseItem.courseCode.upper() for courseItem in currTimetable]
 	global courseCodeTypeSet
 	courseCodeTypeSet = set(courseCodeItem.split(" ")[0] for courseCodeItem in currCourseCodesList)
-	print(cmdBarStr)
-	print("Timetable changed!")
-	print(cmdBarStr)
+	print(cmdBarStr + "\n" + "Timetable changed!" + "\n" + cmdBarStr)
+
 def printClasses(_dayInt):
+	""" Prints all classes that occur on a particular day.
+	:param _dayInt: The day of the week in integer form. See global variable list dayOfWeekList for ordering.
+	"""
+	freeClassesCount = 0 #variable for the amount of classes in the schedule that aren't scheduled on _dayInt day
 	for classItem in currTimetable:
+		dateListCount = 0 #variable for the amount of class times of the classItem that are scheduled for _dayInt day
 		for dateListItem in classItem.dateList:
 			if (dateListItem[0] == dayOfWeekList[_dayInt]):
 				#printing a course item
-				print(courseBarStr)
-				print(classItem.courseCode)
-				print(dateListItem[1] + " to " + dateListItem[2])
-				print(dateListItem[3])
-				print(courseBarStr)
+				print(courseBarStr + "\n" + classItem.courseCode + "\n" + dateListItem[1] + " to " + dateListItem[2] + "\n" + dateListItem[3] + "\n" + courseBarStr)
+				#incrementing counter
+				dateListCount += 1
+		if dateListCount == 0: #dateListCount would be 0 if there are no class times for this classItem scheduled for _dayInt day
+			freeClassesCount += 1;
+	if freeClassesCount >= len(currTimetable): #if the amount of free classes is equal to or greater than the total amount of classes on the schedule
+		print("There are no classes scheduled for " + dayOfWeekList[_dayInt] + ".")
+
 def printTimes(_courseStr):
+	""" Prints all times this course is scheduled for.
+	:param _courseStr: The name of the course to print times for.
+	"""
 	for classItem in currTimetable:
 		if _courseStr == classItem.courseCode:
 			print(classItem.courseCode)
 			#printing all times and corresponding room for course
 			for dateListItem in classItem.dateList:
-				print(dateListItem[0] + ": " + dateListItem[1] + " to " + dateListItem[2])
-				print(dateListItem[3])
+				print(dateListItem[0] + ": " + dateListItem[1] + " to " + dateListItem[2] + "\n" + dateListItem[3])
+
 def processCommand(_cmdStr):
+	""" Processes command given by the user.
+	:param _cmdStr: The command given by the user as a string.
+	"""
 	print(cmdBarStr)
 	cmdLines = _cmdStr.split()
 	if len(cmdLines) > 1:
@@ -154,7 +179,7 @@ def processCommand(_cmdStr):
 			cmdLines[1] += " " + cmdLines[2]
 	if cmdLines[0] == cmdList[0]:
 		try:
-			printClasses(timesDic[cmdLines[1].lower()])
+			printClasses(timesDic[cmdLines[1].lower()] % len(dayOfWeekList))
 		except Exception:
 			print("Error: Please enter a valid secondary command following \"" + cmdList[0] + "\"")
 	elif cmdLines[0] == cmdList[1]:
@@ -174,20 +199,16 @@ def processCommand(_cmdStr):
 	else:
 		print("Error: Please enter a valid command")
 	print(cmdBarStr)
+
 def main():
+	""" Main Entry Point """
 	thePath = getcwd() + "\\schedules\\"
 	listOfFiles = [f for f in listdir(thePath) if isfile(join(thePath,f))]
 	for i in range(len(listOfFiles)):
 		loadTimetable(join(thePath,listOfFiles[i]),listOfFiles[i].split(".")[0])
-	print(cmdBarStr)
-	print("Welcome to Timetable Helper!")
-	print(cmdBarStr)
+	print(cmdBarStr + "\n" + "Welcome to Timetable Helper!" + "\n" + cmdBarStr)
 	while not(isDone):
-		print(cmdBarStr)
-		print("Current timetable: " + currTimetableName)
-		print(cmdBarStr)
-		print("What would you like to see?")
-		print(cmdBarStr)
+		print(cmdBarStr + "\n" + "Current timetable: " + currTimetableName + "\n" + cmdBarStr + "\n" + "What would you like to see?" + "\n" + cmdBarStr)
 		for menuOption in cmdList:
 			if menuOption == "times" or menuOption == "classes" or menuOption == "change_timetable":
 				print(menuOption + " (",end="",flush=True)
