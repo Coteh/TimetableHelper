@@ -208,17 +208,14 @@ def main():
 	parser = ArgumentParser(description="Displays timetable information.", formatter_class=RawTextHelpFormatter)
 	parser.add_argument('-c', '--command', help='A valid TimetableHelper command.' + " (" + ', '.join(cmdStr for cmdStr in cmdList) + "), followed by a secondary parameter command.")
 	# Check to see if user entered any command line arguments
-	enteredCmd = False
 	args = parser.parse_args()
-	if (args.command):
-		enteredCmd = True #We entered a command!
 	# Loading in schedules from filepath
 	thePath = getcwd() + "\\schedules\\"
 	listOfFiles = [f for f in listdir(thePath) if isfile(join(thePath,f))]
 	for i in range(len(listOfFiles)):
 		loadTimetable(join(thePath,listOfFiles[i]),listOfFiles[i].split(".")[0])
 	# Did user enter in a command from the command line?
-	if (enteredCmd):
+	if (args.command):
 		processCommand(args.command)
 		return #Skip the Welcome dialog entirely
 	# Display the Welcome dialog and input loop
