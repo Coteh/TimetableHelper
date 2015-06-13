@@ -7,6 +7,7 @@ from os import listdir, getcwd
 from os.path import isfile, join
 from datetime import datetime
 from configparser import ConfigParser
+from argparse import ArgumentParser, RawTextHelpFormatter
 
 ''' Global Variables '''
 #configs
@@ -202,10 +203,25 @@ def processCommand(_cmdStr):
 
 def main():
 	""" Main Entry Point """
+	## Initial setup ##
+	# Setup command parsing
+	parser = ArgumentParser(description="Displays timetable information.", formatter_class=RawTextHelpFormatter)
+	parser.add_argument('-c', '--command', help='A valid TimetableHelper command.' + " (" + ', '.join(cmdStr for cmdStr in cmdList) + "), followed by a secondary parameter command.")
+	# Check to see if user entered any command line arguments
+	enteredCmd = False
+	args = parser.parse_args()
+	if (args.command):
+		enteredCmd = True #We entered a command!
+	# Loading in schedules from filepath
 	thePath = getcwd() + "\\schedules\\"
 	listOfFiles = [f for f in listdir(thePath) if isfile(join(thePath,f))]
 	for i in range(len(listOfFiles)):
 		loadTimetable(join(thePath,listOfFiles[i]),listOfFiles[i].split(".")[0])
+	# Did user enter in a command from the command line?
+	if (enteredCmd):
+		processCommand(args.command)
+		return #Skip the Welcome dialog entirely
+	# Display the Welcome dialog and input loop
 	print(cmdBarStr + "\n" + "Welcome to Timetable Helper!" + "\n" + cmdBarStr)
 	while not(isDone):
 		print(cmdBarStr + "\n" + "Current timetable: " + currTimetableName + "\n" + cmdBarStr + "\n" + "What would you like to see?" + "\n" + cmdBarStr)
@@ -237,7 +253,7 @@ def main():
 			except Exception:
 				print("Error: Couldn't process command! Please try again.")
 				print(cmdBarStr)
-			
+
 
 if __name__ == '__main__':
 	main()
