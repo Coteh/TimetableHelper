@@ -1,7 +1,7 @@
 TimetableHelper
 =========
 
-A small python script that reads in specially formatted textfiles containing school timetable information (courses, times, and rooms),
+A small python 3 script that reads in specially formatted textfiles containing school timetable information (courses, times, and rooms),
 which are then organized by the script and then displayed to the user.
 
 The user types in the following commands to get information displayed to them:
