@@ -38,8 +38,10 @@ def timeNumFromString(timeStr):
         if not(meridiem == "AM" or meridiem == "PM"):
             raise InvalidTimeException("Time string format is invalid.")
         isPM = (meridiem == "PM")
-    hours = int(timeStr[:2])
+    hours = int(timeStr[:2]) % 24
     mins = int(timeStr[2:4])
     if (isPM):
-        hours = (hours + 12) % 24
+        hours = hours + 12 if hours != 12 else hours
+    elif (hours == 12 and timeStrLen == 6):
+        hours = 0
     return (hours * 60) + mins
