@@ -1,15 +1,34 @@
-TimetableHelper
+timetable
 =========
 
-A small python 3 script that reads in specially formatted textfiles containing school timetable information (courses, times, and rooms),
-which are then organized by the script and then displayed to the user.
+A console app written in Python 3 that displays school timetable information.
 
-The user types in the following commands to get information displayed to them:
+School timetables are stored as JSON and parsed using [the Python Standard Library's JSON decoder](https://docs.python.org/3/library/json.html).
 
-times [today, tomorrow, yesterday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] - displays the courses that are in session for that day with the corresponding room number for each time slot
+Features
+---------
+- View general information about timetable (start date, end date, list of all courses with time slot count)
+- View all time slots for specified class
+- View all classes scheduled for a particular day
+- Option to view times in either 12hr format (AM/PM) or 24hr format
 
-classes [CRSE 100, ...] - displays all the timeslots of specified course
+Issues
+---------
+- Nothing yet, but report an issue in Issues if you come across anything
 
-change_timetable [timetablename, ...] - swaps out one timetable for another that has been loaded in
+Future Additions
+---------
+- Exam mode: View exams only. (and hide exams from normal timetable view)
+- View amount of exams in timetable info
+- Write documentation
+- Add unit tests
+- Render timetable to HTML
+- Add/remove courses and slots to/from a timetable from within the console app
+  - Export modified timetable to JSON, overwriting the previous version
+- Import/Export from/to iCalendar format
 
-exit - exits the console app
+Name History
+---------
+TimetableHelper: September 2014 - September 2015
+
+timetable: September 2015 - present

@@ -1,0 +1,119 @@
+{
+  "timetable_version": 2.0,
+  "start_date": "20150908",
+  "end_date": "20151218",
+  "course": {
+    "code": "GTHB 300",
+    "teacher": "M. Octocat",
+    "description": "Advanced GitHub I",
+    "slot": {
+      "type": "lecture",
+      "day": "monday",
+      "time_start": "0950",
+      "time_end": "1125",
+      "room": "G200"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "1030",
+      "time_end": "1130",
+      "room": "D400"
+    }
+  },
+  "course": {
+    "code": "GTHB 301",
+    "teacher": "M. Octocat",
+    "description": "The Cherry-on-Top Commit",
+    "slot": {
+      "type": "lecture",
+      "day": "tuesday",
+      "time_start": "1130",
+      "time_end": "1315",
+      "room": "T530"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "thursday",
+      "time_start": "1030",
+      "time_end": "1130",
+      "room": "H200"
+    }
+  },
+  "course": {
+    "code": "GTHB 302",
+    "teacher": "M. Octocat",
+    "description": "Pitching the Fork",
+    "slot": {
+      "type": "lecture",
+      "day": "wednesday",
+      "time_start": "0950",
+      "time_end": "1330",
+      "room": "E325"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "monday",
+      "time_start": "0830",
+      "time_end": "0930",
+      "room": "F540"
+    }
+  },
+  "course": {
+    "code": "GTHB 303",
+    "teacher": "M. Octocat",
+    "description": "The Greater Contribution",
+    "slot": {
+      "type": "lecture",
+      "day": "friday",
+      "time_start": "1330",
+      "time_end": "1550",
+      "room": "G600"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "1625",
+      "time_end": "1725",
+      "room": "G200"
+    }
+  },
+  "course": {
+    "code": "GTHB 304",
+    "teacher": "M. Octocat",
+    "description": "Git Internals",
+    "slot": {
+      "type": "lecture",
+      "day": "monday",
+      "time_start": "1225",
+      "time_end": "1425",
+      "room": "F123"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "tuesday",
+      "time_start": "1225",
+      "time_end": "1325",
+      "room": "C500"
+    }
+  },
+  "course": {
+    "code": "GTHB 305",
+    "teacher": "M. Octocat",
+    "description": "Social Dynamics of Project Collaboration",
+    "slot": {
+      "type": "lecture",
+      "day": "wednesday",
+      "time_start": "1530",
+      "time_end": "1725",
+      "room": "G200"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "0830",
+      "time_end": "0930",
+      "room": "W100"
+    }
+  }
+}

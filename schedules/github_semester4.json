@@ -1,0 +1,119 @@
+{
+  "timetable_version": 2.0,
+  "start_date": "20160108",
+  "end_date": "20160428",
+  "course": {
+    "code": "GTHB 400",
+    "teacher": "M. Octocat",
+    "description": "Advanced GitHub II",
+    "slot": {
+      "type": "lecture",
+      "day": "monday",
+      "time_start": "0950",
+      "time_end": "1125",
+      "room": "G200"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "1030",
+      "time_end": "1130",
+      "room": "D400"
+    }
+  },
+  "course": {
+    "code": "GTHB 401",
+    "teacher": "M. Octocat",
+    "description": "The World of Version Control: Client-Server and Distributed",
+    "slot": {
+      "type": "lecture",
+      "day": "tuesday",
+      "time_start": "1130",
+      "time_end": "1315",
+      "room": "T530"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "thursday",
+      "time_start": "1030",
+      "time_end": "1130",
+      "room": "H200"
+    }
+  },
+  "course": {
+    "code": "GTHB 402",
+    "teacher": "M. Octocat",
+    "description": "The Branch Forest: Dealing with Complicated Branches",
+    "slot": {
+      "type": "lecture",
+      "day": "wednesday",
+      "time_start": "0950",
+      "time_end": "1330",
+      "room": "E325"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "monday",
+      "time_start": "0830",
+      "time_end": "0930",
+      "room": "F540"
+    }
+  },
+  "course": {
+    "code": "GTHB 403",
+    "teacher": "M. Octocat",
+    "description": "Fame Frenzy: Making it to the Trending List on GitHub",
+    "slot": {
+      "type": "lecture",
+      "day": "friday",
+      "time_start": "1330",
+      "time_end": "1550",
+      "room": "G600"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "1625",
+      "time_end": "1725",
+      "room": "G200"
+    }
+  },
+  "course": {
+    "code": "GTHB 404",
+    "teacher": "M. Octocat",
+    "description": "Crunch Time: How Tight Deadlines Affect Repository Structure",
+    "slot": {
+      "type": "lecture",
+      "day": "monday",
+      "time_start": "1225",
+      "time_end": "1425",
+      "room": "F123"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "tuesday",
+      "time_start": "1225",
+      "time_end": "1325",
+      "room": "C500"
+    }
+  },
+  "course": {
+    "code": "GTHB 405",
+    "teacher": "M. Octocat",
+    "description": "Why Do I Teach Everything?",
+    "slot": {
+      "type": "lecture",
+      "day": "wednesday",
+      "time_start": "1530",
+      "time_end": "1725",
+      "room": "G200"
+    },
+    "slot": {
+      "type": "lab",
+      "day": "friday",
+      "time_start": "0830",
+      "time_end": "0930",
+      "room": "W100"
+    }
+  }
+}
