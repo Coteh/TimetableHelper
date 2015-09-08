@@ -3,6 +3,7 @@ from src.timetable_exceptions import InvalidTimetableException
 
 smallDashes = "---------------------"
 bigDashes = "------------------------------"
+miniDashes = "--------"
 
 def printInfo(timetable):
 	""" Prints general info about the timetable.
@@ -46,7 +47,7 @@ def printClasses(timetable, dayInt):
 					print(course.courseCode + "\n"
 						+ course.teacher + "\n"
 						+ course.description + "\n"
-						+ smallDashes)
+						+ miniDashes)
 					isCourseInfoPrinted = True
 				timeStart, timeEnd = "", ""
 				if (timetable_config.use12HrFormat):
@@ -57,7 +58,8 @@ def printClasses(timetable, dayInt):
 					+ "Time Start: " + timeStart + "\n"
 					+ "Time End: " + timeEnd + "\n"
 					+ "Room: " + slot.room + "\n"
-					+ smallDashes)
+					+ miniDashes)
+		if (isCourseInfoPrinted): print(smallDashes)
 	if (not isAnyClasses):
 		print("There are no classes scheduled for " + date_converter.dayAsString(dayInt) + ".")
 

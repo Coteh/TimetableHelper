@@ -14,7 +14,17 @@ slotStrToEnumConvertDic = {
 }
 
 def slotTypeAsString(slotType):
-    return slotStrDic[slotType]
+    slotStr = ""
+    try:
+        slotStr = slotStrDic[slotType]
+    except KeyError as e:
+        slotStr = slotStrDic[SlotType.none]
+    return slotStr
 
 def slotTypeStringAsType(slotTypeStr):
-    return slotStrToEnumConvertDic[slotTypeStr]
+    slotType = SlotType.none
+    try:
+        slotType = slotStrToEnumConvertDic[slotTypeStr]
+    except KeyError as e:
+        pass
+    return slotType
