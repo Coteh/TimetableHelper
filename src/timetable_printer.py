@@ -79,15 +79,16 @@ def printTimes(timetable, courseCodeStr):
 		if (course.courseCode == courseCodeStr):
 			isCourseExist = True
 			selectedCourse = course
+			break
 	if (not isCourseExist):
 		print("Course " + courseCodeStr + " was not found.")
 		return
 	isAnyTimes = False
 	for slot in selectedCourse.courseSlots:
 		if (not isAnyTimes):
-			print(course.courseCode + "\n"
-				+ course.teacher + "\n"
-				+ course.description + "\n"
+			print(selectedCourse.courseCode + "\n"
+				+ selectedCourse.teacher + "\n"
+				+ selectedCourse.description + "\n"
 				+ smallDashes)
 			isAnyTimes = True
 		timeStart, timeEnd = "", ""
