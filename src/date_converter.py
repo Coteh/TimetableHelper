@@ -1,11 +1,11 @@
-from datetime import datetime
+from datetime import date
 from src.timetable_exceptions import InvalidCalendarDateException
 
 # List of days of the week
 dayOfWeekList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 daysInAWeek = len(dayOfWeekList)
 # Grabs the current day of the week from datetime
-todayNum = datetime.today().weekday()
+todayNum = date.today().weekday()
 # Extrapolate the previous day and the next day from today's value
 tomorrowNum = (todayNum + 1) % daysInAWeek
 yesterdayNum = (todayNum - 1) % daysInAWeek

@@ -7,7 +7,7 @@ from src.timetable_exceptions import InvalidTimeException
 
 def getHoursAndMins(timeNum):
     amtOfHours = math.floor(timeNum / 60)
-    amtOfMins = timeNum - (amtOfHours * 60)
+    amtOfMins = timeNum % 60
     return amtOfHours, amtOfMins
 
 def getPrintedTime(amtOfHours, amtOfMins):
